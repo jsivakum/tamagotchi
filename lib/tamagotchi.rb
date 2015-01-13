@@ -53,13 +53,14 @@ class Tamagotchi
 
   define_method(:feed_it) do
     t=Time.now
-    food_level_new = @food - (t.sec - @current_time_food.sec).to_i
-    food_level_set(food_level_new.to_i)
-    add_to_age(t.sec-@current_time_food.sec)
+
+    @food -= (t.tv_sec - @current_time_food.tv_sec)
+
+    food_level_set(@food)
+    #binding.pry
+    add_to_age(t.tv_sec-@current_time_food.tv_sec)
     if (@food<20 && is_alive?())
        @food += 1
-       puts @food
-       binding.pry
        @current_time_food=Time.now
     end
   end

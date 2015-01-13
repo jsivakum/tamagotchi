@@ -45,7 +45,8 @@ describe("#feed_it") do
     my_pet.feed_it()
     sleep(8)
     my_pet.feed_it()
-    expect(my_pet.get_age()).to(eq(0.2))
+    expect(my_pet.get_age()).to(eq(8))
+    expect(my_pet.food_level()).to(eq(4))
   end
 end
 
